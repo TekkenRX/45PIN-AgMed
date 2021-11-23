@@ -58,16 +58,16 @@ class Login implements BaseEntity, JsonSerializable
      */
     public function getPerson()
     {
-        return $this->person;
+        return $this->id_person;
     }
 
     /**
-     * Set the value of person
-     * @param int|Person|null $person
+     * Set the value of id_person
+     * @param int|Person|null $id_person
      */
-    public function setPerson($person)
+    public function setPerson($id_person)
     {
-        $this->person = $person;
+        $this->id_person = $id_person;
     }
 
     /**
