@@ -5,19 +5,13 @@ namespace AgMed\Model\Entity;
 use AgMed\Model\Entity\BaseEntity;
 use JsonSerializable;
 
-class Doctor implements BaseEntity, JsonSerializable
+class Nurse implements BaseEntity, JsonSerializable
 {
     /** @GeneratedValue */
     private $id;
 
     /** @var AgMed\Model\Entity\Employee $id_employee*/
     private $id_employee;
-
-    /** @var AgMed\Model\Entity\Login $login*/
-    private $login;
-
-    /** @var string $crm*/
-    private $crm;
 
     /** @var string $degree*/
     private $degree;
@@ -58,41 +52,6 @@ class Doctor implements BaseEntity, JsonSerializable
         $this->id_employee = $id_employee;
     }
 
-    /**
-     * Obtém o login da entidade
-     * @return int|null
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Modifica o valor de login da entidade
-     * @param int|null $login
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-    }
-
-    /**
-     * Obtém o crm da entidade
-     * @return string|null
-     */
-    public function getCrm()
-    {
-        return $this->crm;
-    }
-
-    /**
-     * Modifica o valor de role da entidade
-     * @param string|null $crm
-     */
-    public function setCrm($crm)
-    {
-        $this->crm = $crm;
-    }
 
     /**
      * Obtém o degree da entidade
@@ -118,8 +77,6 @@ class Doctor implements BaseEntity, JsonSerializable
         return [
             'id'       => $this->getId(),
             'employee' => $this->getEmployee(),
-            'login'    => $this->getLogin(),
-            'crm'      => $this->getCrm(),
             'degree'   => $this->getDegree(),
         ];
     }
