@@ -22,6 +22,18 @@ class Login implements BaseEntity, JsonSerializable
     /** @var string*/
     private $password;
 
+    public function __construct()
+    {
+        //Gera uma string aleatória
+        $token = openssl_random_pseudo_bytes(16);
+
+        // converte a informação binária na representação hexadecimal
+        $token = bin2hex($token);
+
+        //insere o valor do token auto gerado dentro da entidade
+        $this->setToken($token);
+    }
+
     /**
      * Obtém o id da entidade
      * @return int|null
@@ -121,7 +133,6 @@ class Login implements BaseEntity, JsonSerializable
             'token'    => $this->getToken(),
             'login'    => $this->getLogin(),
             'password' => $this->getPassword(),
-
         ];
     }
 }
