@@ -3,7 +3,7 @@ import ExitBtn from "./Exit";
 import Option from "./Option";
 import "./Workbar.css";
 
-const Workbar = ({ options, handleOptionFocus, handleClick}) => {
+const Workbar = ({ options, handleOptionFocus, handleClick }) => {
   const [colors] = useState([
     {
       id: 1,
@@ -19,7 +19,7 @@ const Workbar = ({ options, handleOptionFocus, handleClick}) => {
     },
     {
       id: 4,
-      color: "#98BAF1",
+      color: "#4B8BF0",
     },
   ]);
 
@@ -28,13 +28,21 @@ const Workbar = ({ options, handleOptionFocus, handleClick}) => {
       <div className="Workbar-left">
         {options.map((option) => (
           <Option
-            style={{ backgroundColor: colors[option.id-1].color}}
+            style={
+              option.id === 4
+                ? {
+                    backgroundColor: colors[option.id - 1].color,
+                    borderLeft: "3px solid #D1D1D1",
+                    borderRight: "3px solid #D1D1D1"
+                  }
+                : { backgroundColor: colors[option.id - 1].color }
+            }
             option={option}
             handleOptionFocus={handleOptionFocus}
           />
         ))}
         <div className="Workbar-right">
-          <ExitBtn handleClick={handleClick}/>
+          <ExitBtn handleClick={handleClick} />
         </div>
       </div>
     </>
