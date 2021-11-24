@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState } from "react";
 import "./App.css";
 import Workbar from "./Components/Workbar/Container";
 import LoginBox from "./Components/LoginAgent/Container";
@@ -59,27 +59,20 @@ function App() {
   ]);
 
   function handleClick() {
-
-    setOptions(optionsList)
-
-    let newRender = render.map((walk) => {
-      if (render[0].texto === "Login") {
-        return { ...walk, texto: "Main" };
-      } else {
-        return { ...walk, texto: "Login" };
-      }
-    })
-
-    setRender(newRender)
-
+    if (render[0].texto === "Login") {
+      render[0].texto = "Main";
+    } else {
+      render[0].texto = "Login";
+    }
+    setRender(render);
   }
 
   return (
     <div className="App">
-      {render.map((walk) => {
-        if (walk.texto === "Login") {
+      {render.map((r) => {
+        if (r.text === "Login") {
           return <LoginBox handleClick={handleClick}></LoginBox>;
-        } else {
+        }else{
           return (
             <Workbar
               options={options}
