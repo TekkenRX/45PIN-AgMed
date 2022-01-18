@@ -14,7 +14,7 @@
     display: flex;
     justify-content: right;
     user-select: none;
-    overflow: hidden;
+    overflow: visible;
 }
 .Option{
     margin: 0 0;
@@ -30,7 +30,7 @@
 .Exit{
     width: 65px;
     height: 65px;
-    /* margin: 10px -20px;
+    margin: 10px -20px;
     cursor: pointer;
-    position: fixed; */
+    position: fixed;
 }
