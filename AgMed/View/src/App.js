@@ -59,8 +59,7 @@ function App() {
   ]);
 
   function handleClick() {
-
-    setOptions(optionsList)
+    setOptions(optionsList);
 
     let newRender = render.map((walk) => {
       if (render[0].texto === "Login") {
@@ -68,10 +67,9 @@ function App() {
       } else {
         return { ...walk, texto: "Login" };
       }
-    })
+    });
 
-    setRender(newRender)
-
+    setRender(newRender);
   }
 
   return (

@@ -10,9 +10,85 @@
     transform: translate(-50%, -50%);
     background-color: #273549; 
     display: grid;
+}
+
+.logo{
+  width: 45%;
+  height: 15%;
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: none; 
+}
+.logoImg{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.usernamebar{
+    width: 75%;
+    height: 10%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: none;
+}  
+.usernamebar:focus {
+    outline: none;
+    color: rgb(45, 45, 80);
+}
+
+.passwordbar{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 10%;
+    display:flex;
+    flex-direction:row;
+}  
+.password{
+    flex-grow:2;
+    border:none;
+} 
+.password:focus {
+    outline: none;
+    color: rgb(45, 45, 80);
+}
+
+.button{
+    width: 10%;
+    height: 100%;
+    border:1px solid #0d114d;
+    background:#0d114d;
+    color:white;
     cursor: pointer;
 }
 .bt{
     width: 100px;
     height: 100px;
+}
+.loginbutton{
+    width: 25%;
+    height: 10%;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+} 
+.img {
+  max-width: 80%;
+  max-height: 80%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
 }
