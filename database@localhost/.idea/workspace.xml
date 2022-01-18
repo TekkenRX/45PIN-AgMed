@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12008a56-3292-4db7-8e97-221b675328a8" name="Changes" comment="" />
+    <list default="true" id="12008a56-3292-4db7-8e97-221b675328a8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../AgMed/View/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgMed/View/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a33e09c0-596f-44bb-a91a-9328100a01f9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a33e09c0-596f-44bb-a91a-9328100a01f9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a33e09c0-596f-44bb-a91a-9328100a01f9/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a33e09c0-596f-44bb-a91a-9328100a01f9/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
