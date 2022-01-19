@@ -1,0 +1,14 @@
+.container{
+    position: relative;
+    top: 200%;
+    width: 30px;
+    height: 124px;
+    background: #989898;;
+    border-radius: 0px 0px 55px 0px;
+    overflow: visible;
+}
+
+.icons{
+    margin-left: 5px;
+    cursor: pointer;
+}

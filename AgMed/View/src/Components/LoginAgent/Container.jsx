@@ -1,9 +1,10 @@
 import PasswordField from "./PasswordField"
 import TextField from "./TextField"
 import PerformLogin from "./PerformLogin"
+import ForgotPassword from "./ForgotPassword"
+
 import "./LoginAgent.css"
 import logo from "./Logo.svg"
-
 
 const LoginBox = ({handleClick}) => {
     return (
@@ -14,7 +15,10 @@ const LoginBox = ({handleClick}) => {
                 </div>
                 <TextField></TextField>
                 <PasswordField></PasswordField>
-                <PerformLogin handleClick={handleClick}></PerformLogin>
+                <div className = "buttons">
+                    <ForgotPassword/>
+                    <PerformLogin handleClick={handleClick}/>
+                </div>
             </div>
         </>
     );

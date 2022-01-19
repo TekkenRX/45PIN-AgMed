@@ -17,7 +17,7 @@ const PasswordField = () => {
 
     return (
     <div className="passwordbar">
-            <input type={passwordShown ? "text" : "password"} name="" id="password" className="password"/>
+            <input type={passwordShown ? "text" : "password"} name="" id="password" className="password" placeholder="Senha.."/>
                 <button onClick={showPassword} className="button">
                     <img
                     src={
