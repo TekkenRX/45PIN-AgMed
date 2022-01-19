@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Workbar from "./Components/Workbar/Container";
 import LoginBox from "./Components/LoginAgent/Container";
+import logo from "./Components/LoginAgent/Logo.svg";
+
 
 function App() {
   function handleOptionFocus(ClickedOptionID) {
@@ -76,14 +78,22 @@ function App() {
     <div className="App">
       {render.map((walk) => {
         if (walk.texto === "Login") {
-          return <LoginBox handleClick={handleClick}></LoginBox>;
+          return (
+          <div>
+            <LoginBox handleClick={handleClick}>
+            </LoginBox>
+          </div>
+
+            );
         } else {
           return (
+          <div>
             <Workbar
               options={options}
               handleOptionFocus={handleOptionFocus}
               handleClick={handleClick}
             ></Workbar>
+          </div>
           );
         }
       })}

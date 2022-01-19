@@ -1,5 +1,5 @@
 .Workbar-left{
-    width: 100%;
+    width: 100;
     height: 50px;
     background-color: #151835; 
     display: flex;
@@ -7,6 +7,17 @@
     user-select: none;
     overflow: visible;
 }
+.Workbar-dummy{
+    width: 100;
+    height: 50px;
+    margin-top: -50px;
+    background-color: #151835; 
+    display: flex;
+    justify-content: left;
+    user-select: none;
+    overflow: visible;
+}
+
 .Workbar-right{
     width: 100%;
     height: 50px;

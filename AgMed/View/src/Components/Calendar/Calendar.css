@@ -1,0 +1,39 @@
+.calendar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 320px;
+    background-color: black;
+}
+.week{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+    height: 20%;
+    background-color: blue;
+}
+.day{
+    width: 14.2857142857%;
+    height: 100%;
+    background-color: rgb(223, 223, 233);
+    text-align: center;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    box-shadow: inset 0px 0px 0px 2px rgb(0, 0, 155);
+    cursor: pointer;
+}
+.day-dummy{
+    width: 14.2857142857%;
+    height: 100%;
+    background-color: blue;
+}
+.cnt{
+    margin-top: 50%;   
+}
