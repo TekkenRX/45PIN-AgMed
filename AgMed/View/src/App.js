@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Sidebar from "./Components/Sidebar/Container";
 import "./App.css";
 import Workbar from "./Components/Workbar/Container";
 import LoginBox from "./Components/LoginAgent/Container";
@@ -93,6 +94,9 @@ function App() {
               handleOptionFocus={handleOptionFocus}
               handleClick={handleClick}
             ></Workbar>
+          <div className="sidebarcontainer">
+            <Sidebar/>
+          </div>
           </div>
           );
         }
