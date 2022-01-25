@@ -1,3 +1,5 @@
+import ElementsContainer from "./ElementsContainer";
+
 import "./Sidebar.css";
 import filter from "./filter.svg";
 import filterback from "./filterback.svg";
@@ -5,7 +7,7 @@ import plus from "./plus.svg";
 import cross from "./cross.svg";
 import { useState } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({elements}) => {
   let [states] = useState([
     { state: "collapsed" },
     { state: "expanded" },
@@ -123,18 +125,21 @@ const Sidebar = () => {
     return (
       <>
         <div className="container-expanded">
-          <img
-            src={cross}
-            alt="*"
-            className="icons"
-            onClick={handlecrossClick}
-          />
-          <img
-            src={filter}
-            alt="^"
-            className="icons"
-            onClick={handlefilterexpClick}
-          />
+          <ElementsContainer elements={elements}/>
+          <div className="icons-container">
+            <img
+              src={cross}
+              alt="*"
+              className="icons"
+              onClick={handlecrossClick}
+            />
+            <img
+              src={filter}
+              alt="^"
+              className="icons"
+              onClick={handlefilterexpClick}
+            />
+          </div>
         </div>
       </>
     );
@@ -163,7 +168,10 @@ const Sidebar = () => {
   if (render[0].state === "filter-expanded") {
     return (
       <>
+        
         <div className="container-expanded">
+          <ElementsContainer elements={elements}/>
+        <div className="icons-container">
           <img
             src={cross}
             alt="*"
@@ -176,6 +184,7 @@ const Sidebar = () => {
             className="icons"
             onClick={handlefilterexpClick}
           />
+        </div>
         </div>
         <div className="filter"></div>
       </>

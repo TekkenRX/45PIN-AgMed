@@ -5,24 +5,25 @@ import Workbar from "./Components/Workbar/Container";
 import LoginBox from "./Components/LoginAgent/Container";
 import logo from "./Components/LoginAgent/Logo.svg";
 
-
 function App() {
   function handleOptionFocus(ClickedOptionID) {
-    console.log(ClickedOptionID);
+    
+    if (ClickedOptionID !== 4) {
 
-    if (4 !== ClickedOptionID) {
-      options = optionsList;
+    options = optionsList;
+
+      const newOption = options.map((option) => {
+        if (option.id === ClickedOptionID) {
+          return { ...option, id: 4 };
+        } else {
+          return option;
+        }
+      });
+
+      setOptions(newOption);
+    }else{
+      setOptions(optionsList);
     }
-
-    const newOption = options.map((option) => {
-      if (option.id === ClickedOptionID) {
-        return { ...option, id: 4 };
-      } else {
-        return option;
-      }
-    });
-
-    setOptions(newOption);
   }
 
   let [options, setOptions] = useState([
@@ -62,6 +63,7 @@ function App() {
   ]);
 
   function handleClick() {
+
     setOptions(optionsList);
 
     let newRender = render.map((walk) => {
@@ -80,24 +82,22 @@ function App() {
       {render.map((walk) => {
         if (walk.texto === "Login") {
           return (
-          <div>
-            <LoginBox handleClick={handleClick}>
-            </LoginBox>
-          </div>
-
-            );
+            <div>
+              <LoginBox handleClick={handleClick}></LoginBox>
+            </div>
+          );
         } else {
           return (
-          <div>
-            <Workbar
-              options={options}
-              handleOptionFocus={handleOptionFocus}
-              handleClick={handleClick}
-            ></Workbar>
-          <div className="sidebarcontainer">
-            <Sidebar/>
-          </div>
-          </div>
+            <div>
+              <Workbar
+                options={options}
+                handleOptionFocus={handleOptionFocus}
+                handleClick={handleClick}
+              ></Workbar>
+              <div className="sidebarcontainer">
+                <Sidebar elements={options} />
+              </div>
+            </div>
           );
         }
       })}

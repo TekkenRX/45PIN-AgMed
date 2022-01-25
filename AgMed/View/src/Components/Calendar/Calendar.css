@@ -8,7 +8,9 @@
     flex-direction: column;
     width: 350px;
     height: 320px;
-    background-color: none;
+    border: solid 5px rgb(75, 75, 75);
+    background-color: #23285a;
+    margin-top: 15px;
 }
 .week{
     display: flex;
@@ -16,7 +18,7 @@
     justify-content: left;
     width: 100%;
     height: 20%;
-    background-color: blue;
+    background-color: #151835;
 }
 .day{
     width: 14.2857142857%;
@@ -26,14 +28,17 @@
     font-size: large;
     font-family: 'Courier New', Courier, monospace;
     color: black;
-    box-shadow: inset 0px 0px 0px 2px rgb(0, 0, 155);
+    box-shadow: inset 0px 0px 0px 2px #3f4d64;
     cursor: pointer;
+    border-radius: 5px;
 }
 .day-dummy{
     width: 14.2857142857%;
     height: 100%;
-    background-color: blue;
+    background-color: #151835;
+    border-radius: 5px;
 }
 .cnt{
-    margin-top: 50%;   
+    margin-top: 25%; 
+    margin-bottom: 25%;  
 }
