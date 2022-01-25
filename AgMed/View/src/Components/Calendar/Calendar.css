@@ -28,9 +28,8 @@
     font-size: large;
     font-family: 'Courier New', Courier, monospace;
     color: black;
-    box-shadow: inset 0px 0px 0px 2px #3f4d64;
+    box-shadow: inset 0px 0px 0px 1px #3f4d64;
     cursor: pointer;
-    border-radius: 5px;
 }
 .day-dummy{
     width: 14.2857142857%;
