@@ -1,14 +1,161 @@
-.container{
-    position: relative;
-    top: 200%;
-    width: 30px;
-    height: 124px;
-    background: #989898;;
-    border-radius: 0px 0px 55px 0px;
-    overflow: visible;
+.container {
+  position: relative;
+  top: 200%;
+  width: 37px;
+  height: 90px;
+  background: #989898;
+  border-radius: 0px 0px 25px 0px;
+  background: #989898;
+  box-shadow: inset 0px 0px 4px 0px #151835;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.icons{
-    margin-left: 5px;
-    cursor: pointer;
+.container-expanded {
+  position: absolute;
+  width: 466px;
+  height: calc(100% - 50px);
+  background: #989898;
+  overflow: visible;
+  display: flex;
+  flex-direction: row;
+  box-shadow: inset 0px 0px 4px 0px #151835;
+}
+.filter {
+  position: absolute;
+  margin-left: 466px;
+  margin-top: 0px;
+  width: 466px;
+  height: calc(100% - 50px);
+  background: #98989870;
+  box-shadow: inset 0px 0px 2px 0px #151835;
+  flex: 1;
+}
+
+.filter-tab {
+  position: absolute;
+  width: 466px;
+  height: calc(100% - 50px);
+  overflow: visible;
+  display: flex;
+  flex-direction: row;
+  background: #98989870;
+  box-shadow: inset 0px 0px 2px 0px #151835;
+}
+
+.container-expanded::-webkit-scrollbar {
+  display: none;
+}
+
+.icons {
+  cursor: pointer;
+  max-width: 30px;
+  max-height: 30px;
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.icons-container {
+  position: relative;
+  width: 37px;
+  height: 90px;
+  background: #989898;
+  border-radius: 0px 0px 25px 0px;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  left: 466px;
+  box-shadow: inset 0px 0px 4px 0px #151835;
+}
+
+.icons-container-filter {
+  position: relative;
+  width: 37px;
+  height: 90px;
+  background: #989898;
+  border-radius: 0px 0px 25px 0px;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  left: 499px;
+  box-shadow: inset 0px 0px 4px 0px #151835;
+}
+
+.elements-container {
+  width: 100%;
+  height: 100%;
+}
+
+.filter-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.filter-option {
+  width: 100%;
+  height: auto;
+  font-size: 15pt;
+  color: rgb(15, 10, 35);
+  padding-left: 15px;
+  box-shadow: inset 0px 0px 1px 0px rgb(15, 10, 35);
+  user-select: none;
+  cursor: pointer;
+}
+.filter-option:hover {
+  width: 100%;
+  height: 5%;
+  font-size: 15pt;
+  padding-left: 15px;
+  box-shadow: inset 0 0 5px #98baf170;
+  background-color: #98baf170;
+  user-select: none;
+  cursor: pointer;
+}
+
+.diary {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgb(0, 0, 0);
+  border-radius: -5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #151835;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #282f66;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #313d52;
+  font-size: 18pt;
+  user-select: none;
 }
