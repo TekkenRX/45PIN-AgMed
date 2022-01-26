@@ -4,6 +4,7 @@
     text-align: center;
 }
 .calendar{
+    margin-left: 50px;
     display: flex;
     flex-direction: column;
     width: 350px;
