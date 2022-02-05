@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Calendar from "../Calendar/Container";
+import CRUDBar from "../CRUD/Cointainer";
 
-const ElementsContainer = ({ elements }) => {
+
+const ElementsContainer = ({ elements, handleFormClick}) => {
 console.log(elements[0])
 
   const [days] = useState([
@@ -61,6 +63,20 @@ console.log(elements[0])
     { name: "Dezembro", tag: 31 },
   ]);
 
+  const [scheduleButtons] = useState([
+    { text: "Visualizar Horários"},
+    { text: "Editar Escala"},
+    { text: "Definir um Horário"},
+    { text: "Limpar registros"},
+  ]);
+
+  const [formButtons] = useState([
+    { text: "Gestão de Clientes"},
+    { text: "Gestão de Médicos"},
+    { text: "Gestão de Enfermeiros"},
+    { text: "Gestão de Equipe"},
+  ]);
+
   if (elements[0].id === 4) {
     console.log("Pen");
     return (
@@ -80,9 +96,7 @@ console.log(elements[0])
     return (
       <>
         <div className="elements-container">
-        <div className="text">
-                Cadastros!
-            </div>
+          <CRUDBar options={formButtons} handleFormClick={handleFormClick}></CRUDBar>
         </div>
       </>
     );
@@ -92,9 +106,7 @@ console.log(elements[0])
     return (
       <>
         <div className="elements-container">
-        <div className="text">
-                Horários!
-            </div>
+          <CRUDBar options={scheduleButtons} handleFormClick={handleFormClick}></CRUDBar>
         </div>
       </>
     );

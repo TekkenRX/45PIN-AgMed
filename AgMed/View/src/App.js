@@ -4,13 +4,12 @@ import "./App.css";
 import Workbar from "./Components/Workbar/Container";
 import LoginBox from "./Components/LoginAgent/Container";
 import logo from "./Components/LoginAgent/Logo.svg";
+import Form from "./Components/CRUD/Form";
 
 function App() {
   function handleOptionFocus(ClickedOptionID) {
-    
     if (ClickedOptionID !== 4) {
-
-    options = optionsList;
+      options = optionsList;
 
       const newOption = options.map((option) => {
         if (option.id === ClickedOptionID) {
@@ -21,7 +20,7 @@ function App() {
       });
 
       setOptions(newOption);
-    }else{
+    } else {
       setOptions(optionsList);
     }
   }
@@ -63,7 +62,6 @@ function App() {
   ]);
 
   function handleClick() {
-
     setOptions(optionsList);
 
     let newRender = render.map((walk) => {
@@ -75,6 +73,33 @@ function App() {
     });
 
     setRender(newRender);
+  }
+
+  let [formRender, setFormRender] = useState([
+    { render: "noform", formtype: "none" },
+    { render: "form", formtype: "none" },
+  ]);
+
+  function handleFormClick(form, clicktype) {
+    let newRender;
+    if (clicktype === "simple") {
+      newRender = formRender.map((walk) => {
+        if (formRender[0].render === "form") {
+          return { ...walk, render: "form", formtype: form };
+        } else {
+          return { ...walk, render: "form", formtype: form };
+        }
+      });
+    } else {
+      newRender = formRender.map((walk) => {
+        if (formRender[0].render === "noform") {
+          return { ...walk, render: "form", formtype: form };
+        } else {
+          return { ...walk, render: "noform", formtype: form };
+        }
+      });
+    }
+    setFormRender(newRender);
   }
 
   return (
@@ -95,8 +120,11 @@ function App() {
                 handleClick={handleClick}
               ></Workbar>
               <div className="sidebarcontainer">
-                <Sidebar elements={options} />
+                <Form state={formRender[0]}></Form>
+                <Sidebar elements={options} handleFormClick={handleFormClick} />
+                
               </div>
+              
             </div>
           );
         }

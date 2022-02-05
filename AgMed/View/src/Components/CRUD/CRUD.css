@@ -1,0 +1,33 @@
+.CRUDBar{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.CRUDButton{
+    font-size: 20pt;
+    height: 100px;
+    width: 100%;
+    background-color: #a3a2a2;
+    box-shadow: inset 0 0 2px rgb(0, 0, 0);
+    text-align: left;
+}
+
+.CRUDButton:hover{ 
+    background-color: #98baf170;
+}
+
+
+.Form{
+    position: absolute;
+    top: 100px;
+    left: calc(466px + 100px);
+    width: 65%;
+    height: 800px;
+    background-color: rgb(175, 175, 175);
+}
+

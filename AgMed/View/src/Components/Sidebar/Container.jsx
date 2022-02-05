@@ -7,7 +7,7 @@ import plus from "./plus.svg";
 import cross from "./cross.svg";
 import { useState } from "react";
 
-const Sidebar = ({ elements }) => {
+const Sidebar = ({ elements, handleFormClick}) => {
   let [states] = useState([
     { state: "collapsed" },
     { state: "expanded" },
@@ -125,7 +125,7 @@ const Sidebar = ({ elements }) => {
     return (
       <>
         <div className="container-expanded">
-          <ElementsContainer elements={elements} />
+          <ElementsContainer elements={elements} handleFormClick={handleFormClick}/>
         </div>
         <div className="icons-container">
           <img
@@ -171,7 +171,7 @@ const Sidebar = ({ elements }) => {
     return (
       <>
         <div className="container-expanded">
-          <ElementsContainer elements={elements} />
+          <ElementsContainer elements={elements} handleFormClick={handleFormClick}/>
 
           <div className="icons-container-filter">
             <img
