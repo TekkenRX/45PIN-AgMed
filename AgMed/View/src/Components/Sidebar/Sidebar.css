@@ -1,6 +1,6 @@
 .container {
-  position: relative;
-  top: 200%;
+  position: absolute;
+  top: 50px;
   width: 37px;
   height: 90px;
   background: #989898;
@@ -12,6 +12,7 @@
 }
 
 .container-expanded {
+  top: 50px;
   position: absolute;
   width: 466px;
   height: calc(100% - 50px);
@@ -19,12 +20,13 @@
   overflow: visible;
   display: flex;
   flex-direction: row;
-  box-shadow: inset 0px 0px 4px 0px #151835;
+  border-right:solid 1px black;
 }
 .filter {
   position: absolute;
   margin-left: 466px;
   margin-top: 0px;
+  top: 50px;
   width: 466px;
   height: calc(100% - 50px);
   background: #98989870;
@@ -35,6 +37,7 @@
 .filter-tab {
   position: absolute;
   width: 466px;
+  top: 50px;
   height: calc(100% - 50px);
   overflow: visible;
   display: flex;
@@ -57,6 +60,7 @@
 
 .icons-container {
   position: relative;
+  top: 50px;
   width: 37px;
   height: 90px;
   background: #989898;

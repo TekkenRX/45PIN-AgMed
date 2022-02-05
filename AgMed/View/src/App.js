@@ -4,7 +4,7 @@ import "./App.css";
 import Workbar from "./Components/Workbar/Container";
 import LoginBox from "./Components/LoginAgent/Container";
 import logo from "./Components/LoginAgent/Logo.svg";
-import Form from "./Components/CRUD/Form";
+import Form from "./Components/CRUD/FormContainer";
 
 function App() {
   function handleOptionFocus(ClickedOptionID) {
@@ -84,19 +84,15 @@ function App() {
     let newRender;
     if (clicktype === "simple") {
       newRender = formRender.map((walk) => {
-        if (formRender[0].render === "form") {
-          return { ...walk, render: "form", formtype: form };
-        } else {
-          return { ...walk, render: "form", formtype: form };
-        }
+        return { ...walk, render: "form", formtype: form };
+      });
+    } else if (form === "none") {
+      newRender = formRender.map((walk) => {
+        return { ...walk, render: "noform", formtype: form };
       });
     } else {
       newRender = formRender.map((walk) => {
-        if (formRender[0].render === "noform") {
           return { ...walk, render: "form", formtype: form };
-        } else {
-          return { ...walk, render: "noform", formtype: form };
-        }
       });
     }
     setFormRender(newRender);
@@ -118,13 +114,13 @@ function App() {
                 options={options}
                 handleOptionFocus={handleOptionFocus}
                 handleClick={handleClick}
+                handleFormClick={handleFormClick}
               ></Workbar>
+
               <div className="sidebarcontainer">
                 <Form state={formRender[0]}></Form>
                 <Sidebar elements={options} handleFormClick={handleFormClick} />
-                
               </div>
-              
             </div>
           );
         }

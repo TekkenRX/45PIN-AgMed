@@ -1,6 +1,6 @@
 import "./CRUD.css";
-let selectedoption;
 let clicktype;
+let selectedoption = "none";
 
 const CrudButton = ({ option, handleFormClick }) => {
 
@@ -12,17 +12,14 @@ const CrudButton = ({ option, handleFormClick }) => {
           if (selectedoption !== option.text) {
             clicktype = "simple";
             selectedoption = option.text;
-          }else{
+          } else {
             clicktype = "doubleclick";
-            selectedoption = "none"
+            selectedoption = "none";
           }
-          console.log(clicktype)
-          console.log(selectedoption);
           handleFormClick(option.text, clicktype);
         }}
-        style={selectedoption === option.text? {color: "white", "background-color": "#244070"} : {"background-color": "#a3a2a2"}}
       >
-        {option.text}
+        <pre className="btntxt"> {option.text}</pre>
       </button>
     </>
   );

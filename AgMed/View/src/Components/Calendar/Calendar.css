@@ -29,9 +29,26 @@
     font-size: large;
     font-family: 'Courier New', Courier, monospace;
     color: black;
+    border: none;
     box-shadow: inset 0px 0px 0px 1px #3f4d64;
     cursor: pointer;
 }
+
+.day:focus{
+    background-color: #151835;
+    color: white;
+    box-shadow: inset 0px 0px 0px 1px #8eafe4;
+}
+
+.day:hover{
+    background-color: #98baf170;
+    color: white;
+}
+
+.day:hover:focus{
+    background-color: #8eafe4;
+}
+
 .day-dummy{
     width: 14.2857142857%;
     height: 100%;

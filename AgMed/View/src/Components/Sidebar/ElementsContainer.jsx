@@ -77,6 +77,7 @@ console.log(elements[0])
     { text: "Gestão de Equipe"},
   ]);
 
+  // Prenche a barra lateral com o caléndário
   if (elements[0].id === 4) {
     console.log("Pen");
     return (
@@ -84,13 +85,14 @@ console.log(elements[0])
         <div className="elements-container">
           <div className="diary">
             {months.map((month) => (
-              <Calendar day={days} week={weeks} month={month} tag={month.tag} />
+              <Calendar day={days} week={weeks} month={month} tag={month.tag} handleFormClick={handleFormClick} />
             ))}
           </div>
         </div>
       </>
     );
   }
+  // Prenche a barra lateral com os botões de cadastro
   if (elements[1].id === 4) {
     console.log("Banana");
     return (
@@ -101,6 +103,7 @@ console.log(elements[0])
       </>
     );
   }
+  // Prenche a barra lateral com os botões de horário 
   if (elements[2].id === 4) {
     console.log("Catdance");
     return (
@@ -110,7 +113,9 @@ console.log(elements[0])
         </div>
       </>
     );
-  } else {
+  } 
+  // Prenche a barra lateral com uma chamada para tipos de elementos
+  else {
     return (
       <>
         <div className="elements-container">
