@@ -64,17 +64,18 @@ console.log(elements[0])
   ]);
 
   const [scheduleButtons] = useState([
-    { text: "Visualizar Horários"},
-    { text: "Editar Escala"},
-    { text: "Definir um Horário"},
-    { text: "Limpar registros"},
+    { text: "Médicos", editLevel: "admin", viewLevel: "admin"},
+    { text: "Enfermeiros", editLevel: "admin", viewLevel: "admin"},
+    { text: "Equipe", editLevel: "admin", viewLevel: "admin"},
   ]);
 
   const [formButtons] = useState([
-    { text: "Gestão de Clientes"},
-    { text: "Gestão de Médicos"},
-    { text: "Gestão de Enfermeiros"},
-    { text: "Gestão de Equipe"},
+    { text: "Clientes", editLevel: "admin", viewLevel: "user"},
+    { text: "Médicos", editLevel: "admin", viewLevel: "admin"},
+    { text: "Enfermeiros", editLevel: "admin" , viewLevel: "admin"},
+    { text: "Equipe", editLevel: "admin", viewLevel: "admin"},
+    { text: "Procedimentos", editLevel: "admin" , viewLevel: "user"},
+    { text: "Usuários", editLevel: "admin", viewLevel: "admin"},
   ]);
 
   // Prenche a barra lateral com o caléndário

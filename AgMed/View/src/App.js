@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Sidebar from "./Components/Sidebar/Container";
+import MassDataInput from "./Components/CRUD/MassDataInput";
 import "./App.css";
 import Workbar from "./Components/Workbar/Container";
 import LoginBox from "./Components/LoginAgent/Container";
 import logo from "./Components/LoginAgent/Logo.svg";
-import Form from "./Components/CRUD/FormContainer";
+import Table from "./Components/CRUD/Table";
 
 function App() {
   function handleOptionFocus(ClickedOptionID) {
@@ -24,6 +25,18 @@ function App() {
       setOptions(optionsList);
     }
   }
+
+  let [fields] = useState([
+    { name: "Opção 1" },
+    { name: "Opção 2" },
+    { name: "Opção 3" },
+    { name: "Opção 4" },
+    { name: "Opção 5" },
+    { name: "Opção 6" },
+    { name: "Opção 7" },
+    { name: "Opção 8" },
+    { name: "Opção 9" },
+  ]);
 
   let [options, setOptions] = useState([
     {
@@ -80,6 +93,11 @@ function App() {
     { render: "form", formtype: "none" },
   ]);
 
+  let [massDataInputRender, setMassDataInputRender] = useState([
+    { render: "noform", formtype: "none", tag:""},
+    { render: "form", formtype: "none" , tag:""},
+  ]);
+
   function handleFormClick(form, clicktype) {
     let newRender;
     if (clicktype === "simple") {
@@ -92,10 +110,28 @@ function App() {
       });
     } else {
       newRender = formRender.map((walk) => {
-          return { ...walk, render: "form", formtype: form };
+        return { ...walk, render: "form", formtype: form };
       });
     }
     setFormRender(newRender);
+  }
+
+  function handleMassDataInputRenderClick(form, clicktype, tag) {
+    let newRender;
+    if (clicktype === "open") {
+      newRender = massDataInputRender.map((walk) => {
+        return { ...walk, render: "form", formtype: form, tag: tag};
+      });
+    } else if (clicktype === "close") {
+      newRender = massDataInputRender.map((walk) => {
+        return { ...walk, render: "noform", formtype: form,  tag: tag};
+      });
+    } else {
+      newRender = massDataInputRender.map((walk) => {
+        return { ...walk, render: "form", formtype: form,  tag: tag};
+      });
+    }
+    setMassDataInputRender(newRender);
   }
 
   return (
@@ -118,9 +154,10 @@ function App() {
               ></Workbar>
 
               <div className="sidebarcontainer">
-                <Form state={formRender[0]}></Form>
-                <Sidebar elements={options} handleFormClick={handleFormClick} />
+                <Table state={formRender[0]} handleMassDataInputRenderClick={handleMassDataInputRenderClick}></Table>
+                <Sidebar elements={options} handleFormClick={handleFormClick}  />
               </div>
+              <MassDataInput state={massDataInputRender[0]} fields={fields} handleMassDataInputRenderClick={handleMassDataInputRenderClick} />
             </div>
           );
         }

@@ -24,11 +24,15 @@
     justify-content: space-between;
     align-items: center;
     font-family: Verdana;
-    color: aliceblue;
+    color: white;
     font-size: 20pt;
     cursor: pointer;
-
 }
+
+.Option:hover{
+    font: bolder;
+}
+
 .Exit{
     width: 65px;
     height: 65px;
