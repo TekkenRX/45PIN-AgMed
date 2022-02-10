@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Calendar from "../Calendar/Container";
+import CRUDBar from "../CRUD/Cointainer";
 
-const ElementsContainer = ({ elements }) => {
+
+const ElementsContainer = ({ elements, handleFormClick}) => {
 console.log(elements[0])
 
   const [days] = useState([
@@ -61,6 +63,22 @@ console.log(elements[0])
     { name: "Dezembro", tag: 31 },
   ]);
 
+  const [scheduleButtons] = useState([
+    { text: "Médicos", editLevel: "admin", viewLevel: "admin"},
+    { text: "Enfermeiros", editLevel: "admin", viewLevel: "admin"},
+    { text: "Equipe", editLevel: "admin", viewLevel: "admin"},
+  ]);
+
+  const [formButtons] = useState([
+    { text: "Clientes", editLevel: "admin", viewLevel: "user"},
+    { text: "Médicos", editLevel: "admin", viewLevel: "admin"},
+    { text: "Enfermeiros", editLevel: "admin" , viewLevel: "admin"},
+    { text: "Equipe", editLevel: "admin", viewLevel: "admin"},
+    { text: "Procedimentos", editLevel: "admin" , viewLevel: "user"},
+    { text: "Usuários", editLevel: "admin", viewLevel: "admin"},
+  ]);
+
+  // Prenche a barra lateral com o caléndário
   if (elements[0].id === 4) {
     console.log("Pen");
     return (
@@ -68,37 +86,37 @@ console.log(elements[0])
         <div className="elements-container">
           <div className="diary">
             {months.map((month) => (
-              <Calendar day={days} week={weeks} month={month} tag={month.tag} />
+              <Calendar day={days} week={weeks} month={month} tag={month.tag} handleFormClick={handleFormClick} />
             ))}
           </div>
         </div>
       </>
     );
   }
+  // Prenche a barra lateral com os botões de cadastro
   if (elements[1].id === 4) {
     console.log("Banana");
     return (
       <>
         <div className="elements-container">
-        <div className="text">
-                Cadastros!
-            </div>
+          <CRUDBar options={formButtons} handleFormClick={handleFormClick}></CRUDBar>
         </div>
       </>
     );
   }
+  // Prenche a barra lateral com os botões de horário 
   if (elements[2].id === 4) {
     console.log("Catdance");
     return (
       <>
         <div className="elements-container">
-        <div className="text">
-                Horários!
-            </div>
+          <CRUDBar options={scheduleButtons} handleFormClick={handleFormClick}></CRUDBar>
         </div>
       </>
     );
-  } else {
+  } 
+  // Prenche a barra lateral com uma chamada para tipos de elementos
+  else {
     return (
       <>
         <div className="elements-container">
