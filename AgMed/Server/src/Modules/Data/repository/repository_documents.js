@@ -1,5 +1,5 @@
 const db = require("../database/database");
-const modelDocuments = require("../model/model_documents");
+
 
 class repository_documents {
   async get() {
@@ -7,16 +7,7 @@ class repository_documents {
       const procedure = await db.query("SELECT * FROM table_documents");
       return procedure;
     } catch (QueryResultError) {
-      return "QueryResultError";
-    }
-  }
-
-  async getModel() {
-    try {
-      const procedure = modelDocuments;
-      return procedure;
-    } catch (QueryResultError) {
-      return "QueryResultError";
+      return "QueryResultError FROM table_documents";
     }
   }
 
@@ -32,7 +23,7 @@ class repository_documents {
 
       return procedure;
     } catch (QueryResultError) {
-      return "QueryResultError";
+      return "QueryResultError FROM table_documents";
     }
   }
 
@@ -43,7 +34,7 @@ class repository_documents {
       );
       return procedure;
     } catch (QueryResultError) {
-      return "QueryResultError";
+      return "QueryResultError FROM table_documents";
     }
   }
 
@@ -54,7 +45,17 @@ class repository_documents {
       );
       return procedure;
     } catch (QueryResultError) {
-      return "QueryResultError";
+      return "QueryResultError FROM table_documents";
+    }
+  }
+
+  async update(id, cpf, rg) {
+    try {
+      const procedure = await db.query(
+        "UPDATE table_documents SET cpf = '"+cpf+"', rg  = '"+rg+"' WHERE id = '"+id+"'");
+      return procedure;
+    } catch (QueryResultError) {
+      return "QueryResultError FROM table_documents";
     }
   }
 
@@ -63,7 +64,7 @@ class repository_documents {
       const procedure = await db.query("DELETE FROM table_documents WHERE id = '"+id+"'");
       return procedure;
     } catch (QueryResultError) {
-      return "QueryResultError";
+      return "QueryResultError FROM table_documents";
     }
   }
 }

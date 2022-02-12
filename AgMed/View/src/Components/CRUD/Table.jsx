@@ -310,7 +310,7 @@ const Form = ({ state, handleMassDataInputRenderClick}) => {
             paginationComponentOptions={paginationComponentOptions}
             highlightOnHover
             pointerOnHover
-            // onRowClicked={() => {}
+            onRowClicked={() => {}}
             onSelectedRowsChange={handleChange}
             clearSelectedRows
             columns={table_doctors}
