@@ -1,0 +1,16 @@
+const model_ = (
+  [
+    {
+      name: "",
+      selector: (row) => row.,
+    },
+    {
+      name: "",
+      selector: (row) => row.,
+    },
+    {
+      name: "",
+      selector: (row) => row.,
+    },
+    ]
+);

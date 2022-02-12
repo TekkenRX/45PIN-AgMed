@@ -1,0 +1,69 @@
+const db = require("../database/database");
+
+class repository_person { 
+  async get() {
+    try {
+      const procedure = await db.query(
+      );
+      return procedure;
+    } catch (QueryResultError) {
+        
+      return QueryResultError;
+    }
+  }
+
+  async getModel() {
+    try {
+      const procedure = await db.query(
+      );
+      return procedure;
+    } catch (QueryResultError) {
+        
+      return QueryResultError;
+    }
+  }
+
+async getID(Property, PropertyType) {
+    try {
+      const procedure = await db.query(
+      );
+      return procedure;
+    } catch (QueryResultError) {
+        
+      return QueryResultError;
+    }
+  }
+
+  async getById(id) {
+    try {
+      const procedure = await db.query(
+      );
+      return procedure;
+    } catch (QueryResultError) {
+        
+      return QueryResultError;
+    }
+  }
+
+  async add() {
+    try {
+      const procedure = await db.query(
+      );
+      return procedure;
+    } catch (QueryResultError) {
+        
+      return QueryResultError;
+    }
+  }
+
+async remove() {
+    try {
+      const procedure = await db.query(
+      );
+      return procedure;
+    } catch (QueryResultError) {
+        
+      return QueryResultError;
+    }
+  }
+}
