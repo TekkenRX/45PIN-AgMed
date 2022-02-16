@@ -105,3 +105,18 @@
   position: absolute;
   top: 50%;
 }
+
+.error{
+    border-radius: 2%;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    font: 20pt;
+    color: red;
+    user-select: none;
+}
+

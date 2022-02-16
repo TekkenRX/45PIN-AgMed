@@ -37,11 +37,11 @@ class repository_persons {
     }
   }
 
-  async add(id_documents, id_address, id_contacts, name, surname) {
+  async add(name, surname, cpf, contact, address) {
     try {
       const procedure = await db.query(
-        "INSERT INTO table_persons (id, id_documents, id_address, id_contacts, name, surname)" +
-          "VALUES (DEFAULT, '"+id_documents+"', '"+id_address+"', '"+id_contacts+"', '"+name+"', '"+surname+"')"
+        "INSERT INTO table_persons (id, name, surname, cpf, contact, address)" +
+          "VALUES (DEFAULT, '"+name+"', '"+surname+"', '"+cpf+"', '"+contact+"', '"+address+"')"
       );
       return procedure;
     } catch (QueryResultError) {
@@ -49,26 +49,26 @@ class repository_persons {
     }
   }
 
-  async update(id, id_documents, id_address, id_contacts, name, surname) {
+  async update(id, name, surname, cpf, contact, address) {
     try {
       const procedure = await db.query(
         "UPDATE table_persons" +
           " SET " +
 
-          "id_documents ="+
-            "'"+id_documents+"'"+
-
-            ", id_address = "+
-            "'"+id_address+"'"+
-
-            ", id_contacts = "+
-            "'"+id_contacts+"'"+
-
-            ", name = "+
+          "name ="+
             "'"+name+"'"+
 
             ", surname = "+
-            "'"+surname+"'" +
+            "'"+surname+"'"+
+
+            ", cpf = "+
+            "'"+cpf+"'"+
+
+            ", contact = "+
+            "'"+contact+"'"+
+
+            ", address = "+
+            "'"+address+"'" +
  
           " WHERE "+
           

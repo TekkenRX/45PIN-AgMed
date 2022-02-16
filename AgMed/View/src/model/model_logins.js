@@ -22,3 +22,5 @@ const model_logins = (
       },
       ]
   );
+
+  module.exports = model_logins;

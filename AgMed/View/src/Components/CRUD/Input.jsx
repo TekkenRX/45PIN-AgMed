@@ -5,7 +5,7 @@ const formInput = ({ field }) => {
     <>
       <div className="inputFiledsCollections">
         <label className="inputFiledsLabel">{field.name}</label>
-        <input className="inputFiledsInput" placeholder={field.name} />
+        <input className="inputFiledsInput" type="date" placeholder={field.name} />
       </div>
     </>
   );

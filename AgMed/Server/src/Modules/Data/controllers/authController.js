@@ -1,7 +1,4 @@
-const RepositoryAddress = require("../repository/repository_addresses");
 const RepositoryClients = require("../repository/repository_clients");
-const RepositoryContacts = require("../repository/repository_contacts");
-const RepositoryDocuments = require("../repository/repository_documents");
 const RepositoryPersons = require("../repository/repository_persons");
 const RepositoryExams = require("../repository/repository_exams");
 const RepositoryExamsInfo = require("../repository/repository_exams_info");
@@ -14,10 +11,7 @@ const RepositoryNurses = require("../repository/repository_nurses");
 const RepositoryEmployees = require("../repository/repository_employees");
 const RepositorySchedule = require("../repository/repository_schedule");
 
-repositoryAddress = new RepositoryAddress();
 repositoryClients = new RepositoryClients();
-repositoryContacts = new RepositoryContacts();
-repositoryDocuments = new RepositoryDocuments();
 repositoryPersons = new RepositoryPersons();
 repositoryExams = new RepositoryExams();
 repositoryExamsInfo = new RepositoryExamsInfo();
@@ -31,82 +25,6 @@ repositoryEmployees = new RepositoryEmployees();
 repositorySchedule = new RepositorySchedule();
 
 class authController {
-  /* Address 
-  //
-  // 
-  // Referering to Address related code
-  */
-
-  async getAddress(req, res) {
-    try {
-      const response = await repositoryAddress.get();
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getIDAddress(req, res) {
-    try {
-      let { Property, PropertyType } = req.body;
-
-      const response = await repositoryAddress.getID(Property, PropertyType);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getByIDAddress(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryAddress.getByID(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async addAddress(req, res) {
-    try {
-      const { city, uf } = req.body;
-
-      const response = await repositoryAddress.add(city, uf);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async updateAddress(req, res) {
-    try {
-      const { id, city, uf } = req.body;
-
-      const response = await repositoryAddress.update(id, city, uf);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async removeAddress(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryAddress.remove(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
   /* Client 
   //
   // 
@@ -149,9 +67,9 @@ class authController {
 
   async addClient(req, res) {
     try {
-      const { id_person } = req.body;
+      const { name, surname, cpf, contact, address } = req.body;
 
-      const response = await repositoryClients.add(id_person);
+      const response = await repositoryClients.add(name, surname, cpf, contact, address);
 
       return res.send({ response });
     } catch (err) {
@@ -159,23 +77,11 @@ class authController {
     }
   }
 
-  // async addComposedClient(req, res) {
-  //   try {
-  //     const { id_person } = req.body;
-
-  //     const response = await repositoryClients.add(id_person);
-
-  //     return res.send({ response });
-  //   } catch (err) {
-  //     return res.status(400).send({ error: "couldn't connect" });
-  //   }
-  // }
-
   async updateClient(req, res) {
     try {
-      const { id, id_person } = req.body;
+      const { id, name, surname, cpf, contact, address } = req.body;
 
-      const response = await repositoryClients.update(id, id_person);
+      const response = await repositoryClients.update(id, name, surname, cpf, contact, address);
 
       return res.send({ response });
     } catch (err) {
@@ -188,304 +94,6 @@ class authController {
       const { id } = req.body;
 
       const response = await repositoryClients.remove(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  /* Contacts 
-  //
-  // 
-  // Referering to Contacts related code
-  */
-
-  async getContacts(req, res) {
-    try {
-      const response = await repositoryContacts.get();
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getIDContacts(req, res) {
-    try {
-      let { Property, PropertyType } = req.body;
-
-      const response = await repositoryContacts.getID(Property, PropertyType);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getByIDContacts(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryContacts.getByID(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async addContacts(req, res) {
-    try {
-      const { email, phone } = req.body;
-
-      const response = await repositoryContacts.add(email, phone);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async updateContacts(req, res) {
-    try {
-      const { id, email, phone } = req.body;
-
-      const response = await repositoryContacts.update(id, email, phone);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async removeContacts(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryContacts.remove(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  /* Documents 
-  //
-  // 
-  // Referering to Documents related code
-  */
-
-  async getDocuments(req, res) {
-    try {
-      const response = await repositoryDocuments.get();
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getIDDocuments(req, res) {
-    try {
-      let { Property, PropertyType } = req.body;
-
-      const response = await repositoryDocuments.getID(Property, PropertyType);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getByIDDocuments(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryDocuments.getByID(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async addDocuments(req, res) {
-    try {
-      const { cpf, rg } = req.body;
-
-      const response = await repositoryDocuments.add(cpf, rg);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async updateDocuments(req, res) {
-    try {
-      const { id, cpf, rg } = req.body;
-
-      const response = await repositoryDocuments.update(id, cpf, rg);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async removeDocuments(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryDocuments.remove(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  /* Persons 
-  //
-  // 
-  // Referering to Persons related code
-  */
-
-  async getPersons(req, res) {
-    try {
-      const response = await repositoryPersons.get();
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getIDPersons(req, res) {
-    try {
-      let { Property, PropertyType } = req.body;
-
-      const response = await repositoryPersons.getID(Property, PropertyType);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getByIDPersons(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryPersons.getByID(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async addPersons(req, res) {
-    try {
-      const { id_documents, id_address, id_contacts, name, surname } = req.body;
-
-      const response = await repositoryPersons.add(
-        id_documents,
-        id_address,
-        id_contacts,
-        name,
-        surname
-      );
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async addComposedPersons(req, res) {
-    try {
-      const { name, surname, city, uf,  cpf, rg, email, phone } = req.body;
-
-      if (city === "") {
-        city = null;
-      }
-      if (uf === "") {
-        uf = null;
-      }
-      if (phone === "") {
-        phone = null;
-      }
-      if (email === "") {
-        email = null;
-      }
-      if (rg === "") {
-        rg = null;
-      }
-
-      const addressID = null;
-      const contactsID = null;
-      const documentsID = null;
-
-      const address = await repositoryAddress.add(city, uf);
-      const document = await repositoryDocuments.add(cpf, rg);
-      const contact = await repositoryContacts.add(email, phone);
-
-      if ((city === null) & (uf !== null)) {
-        addressID = await repositoryAddress.getID(uf, "uf");
-      } else if ((uf === null) & (city !== null)) {
-        addressID = await repositoryAddress.getID(city, "city");
-      }
-
-      if ((email === null) & (phone !== null)) {
-        contactsID = await repositoryContacts.getID(phone, "phone");
-      } else if ((phone === null) & (email !== null)) {
-        contactsID = await repositoryContacts.getID(email, "email");
-      }
-
-      documentsID = await repositoryDocuments.getID(cpf, "cpf");
-
-      const response = await repositoryPersons.add(
-        documentsID,
-        addressID,
-        contactsID,
-        name,
-        surname
-      );
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async updatePersons(req, res) {
-    try {
-      const { id, id_documents, id_address, id_contacts, name, surname } =
-        req.body;
-
-      const response = await repositoryPersons.update(
-        id,
-        id_documents,
-        id_address,
-        id_contacts,
-        name,
-        surname
-      );
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async removePersons(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryPersons.remove(id);
 
       return res.send({ response });
     } catch (err) {
@@ -996,92 +604,6 @@ class authController {
     }
   }
 
-  /* Exams 
-  //
-  // 
-  // Referering to Exams related code
-  */
-
-  async getExams(req, res) {
-    try {
-      const response = await repositoryExams.get();
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getIDExams(req, res) {
-    try {
-      let { Property, PropertyType } = req.body;
-
-      const response = await repositoryExams.getID(Property, PropertyType);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getByIDExams(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryExams.getByID(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async addExams(req, res) {
-    try {
-      const { id_client, id_doctor, id_exam_info } = req.body;
-
-      const response = await repositoryExams.add(
-        id_client,
-        id_doctor,
-        id_exam_info
-      );
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async updateExams(req, res) {
-    try {
-      const { id, id_client, id_doctor, id_exam_info } = req.body;
-
-      const response = await repositoryExams.update(
-        id,
-        id_client,
-        id_client,
-        id_doctor,
-        id_exam_info
-      );
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async removeExams(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryExams.remove(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
   /* exams_info 
   //
   // 
@@ -1167,82 +689,6 @@ class authController {
     }
   }
 
-  /* employees
-  //
-  // 
-  // Referering to employees related code
-  */
-
-  async getEmployees(req, res) {
-    try {
-      const response = await repositoryEmployees.get();
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getIDEmployees(req, res) {
-    try {
-      let { Property, PropertyType } = req.body;
-
-      const response = await repositoryEmployees.getID(Property, PropertyType);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async getByIDEmployees(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryEmployees.getByID(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async addEmployees(req, res) {
-    try {
-      const { id_persons, role } = req.body;
-
-      const response = await repositoryEmployees.add(id_persons, role);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async updateEmployees(req, res) {
-    try {
-      const { id, id_persons, role } = req.body;
-
-      const response = await repositoryEmployees.update(id, id_persons, role);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
-  async removeEmployees(req, res) {
-    try {
-      const { id } = req.body;
-
-      const response = await repositoryEmployees.remove(id);
-
-      return res.send({ response });
-    } catch (err) {
-      return res.status(400).send({ error: "couldn't connect" });
-    }
-  }
-
   /* doctors
   //
   // 
@@ -1285,13 +731,18 @@ class authController {
 
   async addDoctors(req, res) {
     try {
-      const { crm, degree, id_employee, id_login } = req.body;
+      const { name, surname, cpf, contact, address, crm, degree, role } =
+        req.body;
 
       const response = await repositoryDoctors.add(
+        name,
+        surname,
+        cpf,
+        contact,
+        address,
         crm,
         degree,
-        id_employee,
-        id_login
+        role
       );
 
       return res.send({ response });

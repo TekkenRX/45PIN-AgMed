@@ -21,3 +21,5 @@ const model_exams_info = ([
     selector: (row) => row.id_login,
   },
 ]);
+
+module.exports = model_exams_info;

@@ -18,3 +18,5 @@ const model_entrys = (
       },
       ]
   );
+
+  module.exports = model_entrys;

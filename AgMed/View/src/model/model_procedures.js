@@ -18,3 +18,5 @@ const model_procedures = (
       },
       ]
   );
+
+  module.exports = model_procedures;

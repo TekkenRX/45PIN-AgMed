@@ -11,3 +11,5 @@ const model_clients = (
       
       ]
   );
+
+  module.exports = model_clients;

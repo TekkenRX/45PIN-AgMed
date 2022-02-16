@@ -1,27 +1,29 @@
 const model_persons = (
   [
     {
-      name: "id",
+      name: "ID",
       selector: (row) => row.id,
     },
     {
-      name: "name",
+      name: "Nome",
       selector: (row) => row.name,
     },
     {
-      name: "surname",
+      name: "Sobrenome",
       selector: (row) => row.surname,
     },
     {
-      name: "id_contacts",
-      selector: (row) => row.id_contacts,
+      name: "CPF",
+      selector: (row) => row.cpf,
     },
     {
-      name: "id_address",
-      selector: (row) => row.id_address,
+      name: "Endereço",
+      selector: (row) => row.address,
     },
     {
-      name: "id_documents",
-      selector: (row) => row.id_documents,
+      name: "Contatos",
+      selector: (row) => row.contact,
     }]
 );
+
+module.exports = model_persons;

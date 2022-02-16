@@ -18,3 +18,5 @@ const model_exams = (
       },
       ]
   );
+
+  module.exports = model_exams;

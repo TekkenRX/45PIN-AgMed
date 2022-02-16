@@ -14,3 +14,5 @@ const model_nurses = (
       },
       ]
   );
+
+  module.exports = model_nurses;

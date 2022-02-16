@@ -33,3 +33,5 @@ const model_schedule = (
       },
       ]
   );
+
+  module.exports = model_schedule;

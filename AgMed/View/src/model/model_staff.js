@@ -10,3 +10,5 @@ const model_staff = (
       },
       ]
   );
+
+  module.exports = model_staff;

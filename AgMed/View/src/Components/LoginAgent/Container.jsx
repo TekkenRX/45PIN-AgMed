@@ -6,7 +6,7 @@ import ForgotPassword from "./ForgotPassword"
 import "./LoginAgent.css"
 import logo from "./Logo.svg"
 
-const LoginBox = ({handleClick}) => {
+const LoginBox = ({handleLogin}) => {
     return (
         <>
             <div className="toolbox">
@@ -17,7 +17,7 @@ const LoginBox = ({handleClick}) => {
                 <PasswordField></PasswordField>
                 <div className = "buttons">
                     <ForgotPassword/>
-                    <PerformLogin handleClick={handleClick}/>
+                    <PerformLogin handleLogin={handleLogin}/>
                 </div>
             </div>
         </>

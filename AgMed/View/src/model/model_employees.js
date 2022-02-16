@@ -14,3 +14,5 @@ const model_employees = (
       },
       ]
   );
+
+  module.exports = model_employees;

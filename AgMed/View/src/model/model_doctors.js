@@ -21,3 +21,5 @@ const model_doctors = ([
     selector: (row) => row.id_login,
   },
 ]);
+
+module.exports = model_doctors;
