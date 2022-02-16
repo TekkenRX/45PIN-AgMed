@@ -1,8 +1,8 @@
 import "./LoginAgent.css"
 
-const PerformLogin = ({handleClick}) => {
+const PerformLogin = ({handleLogin}) => {
     return (<div>
-                <button onClick={() => handleClick()} className = "clickbutton">Entrar</button>
+                <button onClick={() => handleLogin()} className = "clickbutton">Entrar</button>
             </div>);
 }
  

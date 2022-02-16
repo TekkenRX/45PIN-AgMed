@@ -1,10 +1,10 @@
 import "./Workbar.css"
 import exitButton from "./exitButton.svg"
 
-const ExitBtn = ({style, handleClick}) => {
+const ExitBtn = ({style, handleLogin}) => {
     return (
         <>  
-            <img src={exitButton} alt="" onClick={() => handleClick()} className="Exit" style={style}/>
+            <img src={exitButton} alt="" onClick={() => handleLogin()} className="Exit" style={style}/>
         </>
     )
 }

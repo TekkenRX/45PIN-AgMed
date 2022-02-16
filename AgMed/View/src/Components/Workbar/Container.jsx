@@ -3,7 +3,7 @@ import ExitBtn from "./Exit";
 import Option from "./Option";
 import "./Workbar.css";
 
-const Workbar = ({ options, handleOptionFocus, handleClick, handleFormClick}) => {
+const Workbar = ({ options, handleOptionFocus, handleLogin, handleFormClick}) => {
 
   const [colors] = useState([
     {
@@ -36,7 +36,7 @@ const Workbar = ({ options, handleOptionFocus, handleClick, handleFormClick}) =>
           />
         ))}
         <div className="Workbar-right">
-          <ExitBtn handleClick={handleClick} />
+          <ExitBtn handleLogin={handleLogin} />
         </div>
       </div>
     </>
