@@ -1,19 +1,19 @@
 const model_procedures = (
     [
       {
-        name: "id",
+        name: "ID",
         selector: (row) => row.id,
       },
       {
-        name: "desc",
+        name: "Descrição",
         selector: (row) => row.desc,
       },
       {
-        name: "price",
+        name: "Valor",
         selector: (row) => row.price,
       },
       {
-        name: "id_doctor",
+        name: "ID do Médico responsavél",
         selector: (row) => row.id_doctor,
       },
       ]

@@ -3,8 +3,17 @@ import axios from "axios";
 
 import Sidebar from "./Components/Sidebar/Container";
 import MassDataInput from "./Components/CRUD/MassDataInput";
-import TableStarter from "./Components/CRUD/TableStarter";
 import Error from "./Components/LoginAgent/Error";
+import modelClients from "./model/model_clients";
+import modelDoctors from "./model/model_doctors";
+import modelNurses from "./model/model_nurses";
+import modelExams from "./model/model_exams";
+import modelLogins from "./model/model_logins";
+import modelMedicalHis from "./model/model_medical_history";
+import modelSchedule from "./model/model_schedule";
+import modelProcedures from "./model/model_procedures";
+import modelStaff from "./model/model_staff";
+import DataList from "./Components/CRUD/DataList";
 
 import "./App.css";
 import Workbar from "./Components/Workbar/Container";
@@ -89,13 +98,15 @@ function App() {
     { render: "form", formtype: "none", tag: "" },
   ]);
 
+  let [tableModel, setTableModel] = useState([]);
+
   function handleLogin() {
     setOptions(optionsList);
     let auth = false;
 
     if (render[0].texto === "Login") {
-      const key = document.getElementsByClassName("password")[0].value;
-      const user = document.getElementsByClassName("usernamebar")[0].value;
+      const key = document.getElementById("#password");
+      const user = document.getElementById("#usernamebar");
       axios
         .get("http://localhost:3001/logins/get/objects")
         .then((resp) => {
@@ -149,26 +160,357 @@ function App() {
     }
   }
 
+  async function handleAdditon(form) {
+    if (form === "Clientes") {
+      let data = 
+        {
+          "Nome" : "",
+          "Sobrenome" : "",
+          "CPF" : "",
+          "Contato" : "",
+          "Endereço" : "",
+        }
+      ;
+
+      
+
+      data.Nome = await document.getElementById("#Nome")
+      data.Sobrenome = await  document.getElementById("#Sobrenome")
+      data.CPF =  await document.getElementById("#CPF")
+      data.Contato = await  document.getElementById("#Contato")
+      data.Endereço = await  document.getElementById("#Endereço")
+
+      
+
+      axios
+        .post("http://localhost:3001/clients/post/object", data)
+        .then(() => {
+          getTableData(form);
+        })
+        .catch((err) => {
+          getTableData(form);
+        });
+    } else {
+      getTableData(form);
+    }
+    if (form === "Médicos") {
+      axios
+        .get("http://localhost:3001/doctors/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Enfermeiros") {
+      axios
+        .get("http://localhost:3001/nurses/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Equipe") {
+      axios
+        .get("http://localhost:3001/staff/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Médicos⠀") {
+      axios
+        .get("http://localhost:3001/''''''''/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Enfermeiros⠀") {
+      axios
+        .get("http://localhost:3001/''''''''/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Equipe⠀") {
+      axios
+        .get("http://localhost:3001/''''''''''''/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Procedimentos") {
+      axios
+        .get("http://localhost:3001/procedures/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Usuários") {
+      axios
+        .get("http://localhost:3001/logins/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (
+      !(form === "Clientes") &
+      !(form === "Médicos") &
+      !(form === "Enfermeiros") &
+      !(form === "Equipe") &
+      !(form === "Médicos⠀") &
+      !(form === "Enfermeiros⠀") &
+      !(
+        (form === "Equipe⠀") &
+        !(form === "Procedimentos") &
+        !(form === "Usuários")
+      )
+    ) {
+      setData([{ id: 0 }]);
+    }
+  }
+
+
   function handleFieldsRender(form) {
     let fields;
+
     if (form === "Clientes") {
       fields = [
-        { name: "Nome" },
-        { name: "Sobrenome" },
-        { name: "CPF" },
-        { name: "Contato" },
-        { name: "Endereço" },
+        { name: "Nome", type: "text" },
+        { name: "Sobrenome", type: "text" },
+        { name: "CPF", type: "number" },
+        { name: "Contato", type: "text" },
+        { name: "Endereço", type: "text" },
       ];
     }
     if (form === "Médicos") {
       fields = [
-        { name: "Nome" },
-        { name: "Sobrenome" },
-        { name: "CPF" },
-        { name: "Contato" },
-        { name: "Endereço" },
-        { name: "CRM" },
-        { name: "Formção" },
+        { name: "Nome", type: "text" },
+        { name: "Sobrenome", type: "text" },
+        { name: "CPF", type: "number" },
+        { name: "Contato", type: "text" },
+        { name: "Endereço", type: "text" },
+        { name: "CRM", type: "text" },
+        { name: "Formação", type: "text" },
+      ];
+    }
+    if (form === "Enfermeiros") {
+      fields = [
+        { name: "Nome", type: "text" },
+        { name: "Sobrenome", type: "text" },
+        { name: "CPF", type: "number" },
+        { name: "Contato", type: "text" },
+        { name: "Endereço", type: "text" },
+        { name: "Formação", type: "text" },
+      ];
+    }
+    if (form === "Equipe") {
+      fields = [
+        { name: "Nome", type: "text" },
+        { name: "Sobrenome", type: "text" },
+        { name: "CPF", type: "number" },
+        { name: "Contato", type: "text" },
+        { name: "Endereço", type: "text" },
+      ];
+    }
+    if (form === "Médicos⠀") {
+      fields = [
+        { name: "ID do funcionário", type: "number" },
+        { name: "UseDomingo", type: "checkbox" },
+        { name: "Domingo1", type: "time" },
+        { name: "Domingo2", type: "time" },
+        { name: "Domingo3", type: "time" },
+        { name: "Domingo4", type: "time" },
+        { name: "UseSegunda", type: "checkbox" },
+        { name: "Segunda1", type: "time" },
+        { name: "Segunda2", type: "time" },
+        { name: "Segunda3", type: "time" },
+        { name: "Segunda4", type: "time" },
+        { name: "UseTerça", type: "checkbox" },
+        { name: "Terça1", type: "time" },
+        { name: "Terça2", type: "time" },
+        { name: "Terça3", type: "time" },
+        { name: "Terça4", type: "time" },
+        { name: "UseQuarta", type: "checkbox" },
+        { name: "Quarta1", type: "time" },
+        { name: "Quarta2", type: "time" },
+        { name: "Quarta3", type: "time" },
+        { name: "Quarta4", type: "time" },
+        { name: "UseQuinta", type: "checkbox" },
+        { name: "Quinta1", type: "time" },
+        { name: "Quinta2", type: "time" },
+        { name: "Quinta3", type: "time" },
+        { name: "Quinta4", type: "time" },
+        { name: "UseSexta", type: "checkbox" },
+        { name: "Sexta1", type: "time" },
+        { name: "Sexta2", type: "time" },
+        { name: "Sexta3", type: "time" },
+        { name: "Sexta4", type: "time" },
+        { name: "UseSabádo", type: "checkbox" },
+        { name: "Sabádo1", type: "time" },
+        { name: "Sabádo2", type: "time" },
+        { name: "Sabádo3", type: "time" },
+        { name: "Sabádo4", type: "time" },
+      ];
+    }
+    if (form === "Enfermeiros⠀") {
+      fields = [
+        { name: "ID do funcionário", type: "number" },
+        { name: "UseDomingo", type: "checkbox" },
+        { name: "Domingo1", type: "time" },
+        { name: "Domingo2", type: "time" },
+        { name: "Domingo3", type: "time" },
+        { name: "Domingo4", type: "time" },
+        { name: "UseSegunda", type: "checkbox" },
+        { name: "Segunda1", type: "time" },
+        { name: "Segunda2", type: "time" },
+        { name: "Segunda3", type: "time" },
+        { name: "Segunda4", type: "time" },
+        { name: "UseTerça", type: "checkbox" },
+        { name: "Terça1", type: "time" },
+        { name: "Terça2", type: "time" },
+        { name: "Terça3", type: "time" },
+        { name: "Terça4", type: "time" },
+        { name: "UseQuarta", type: "checkbox" },
+        { name: "Quarta1", type: "time" },
+        { name: "Quarta2", type: "time" },
+        { name: "Quarta3", type: "time" },
+        { name: "Quarta4", type: "time" },
+        { name: "UseQuinta", type: "checkbox" },
+        { name: "Quinta1", type: "time" },
+        { name: "Quinta2", type: "time" },
+        { name: "Quinta3", type: "time" },
+        { name: "Quinta4", type: "time" },
+        { name: "UseSexta", type: "checkbox" },
+        { name: "Sexta1", type: "time" },
+        { name: "Sexta2", type: "time" },
+        { name: "Sexta3", type: "time" },
+        { name: "Sexta4", type: "time" },
+        { name: "UseSabádo", type: "checkbox" },
+        { name: "Sabádo1", type: "time" },
+        { name: "Sabádo2", type: "time" },
+        { name: "Sabádo3", type: "time" },
+        { name: "Sabádo4", type: "time" },
+      ];
+    }
+    if (form === "Equipe⠀") {
+      fields = [
+        { name: "ID do funcionário", type: "number" },
+        { name: "UseDomingo", type: "checkbox" },
+        { name: "Domingo1", type: "time" },
+        { name: "Domingo2", type: "time" },
+        { name: "Domingo3", type: "time" },
+        { name: "Domingo4", type: "time" },
+        { name: "UseSegunda", type: "checkbox" },
+        { name: "Segunda1", type: "time" },
+        { name: "Segunda2", type: "time" },
+        { name: "Segunda3", type: "time" },
+        { name: "Segunda4", type: "time" },
+        { name: "UseTerça", type: "checkbox" },
+        { name: "Terça1", type: "time" },
+        { name: "Terça2", type: "time" },
+        { name: "Terça3", type: "time" },
+        { name: "Terça4", type: "time" },
+        { name: "UseQuarta", type: "checkbox" },
+        { name: "Quarta1", type: "time" },
+        { name: "Quarta2", type: "time" },
+        { name: "Quarta3", type: "time" },
+        { name: "Quarta4", type: "time" },
+        { name: "UseQuinta", type: "checkbox" },
+        { name: "Quinta1", type: "time" },
+        { name: "Quinta2", type: "time" },
+        { name: "Quinta3", type: "time" },
+        { name: "Quinta4", type: "time" },
+        { name: "UseSexta", type: "checkbox" },
+        { name: "Sexta1", type: "time" },
+        { name: "Sexta2", type: "time" },
+        { name: "Sexta3", type: "time" },
+        { name: "Sexta4", type: "time" },
+        { name: "UseSabádo", type: "checkbox" },
+        { name: "Sabádo1", type: "time" },
+        { name: "Sabádo2", type: "time" },
+        { name: "Sabádo3", type: "time" },
+        { name: "Sabádo4", type: "time" },
+      ];
+    }
+    if (form === "Procedimentos") {
+      fields = [
+        { name: "ID do Médico responsavél", type: "number" },
+        { name: "Descrição", type: "text" },
+        { name: "Preço", type: "text" },
+      ];
+    }
+    if (form === "Usuários") {
+      fields = [
+        { name: "ID da Pessoa", type: "number" },
+        { name: "Login", type: "text" },
+        { name: "Senha", type: "password" },
+        { name: "Confirmar Senha", type: "password" },
+        { name: "Token", type: "text" },
+      ];
+    } else if (
+      !(form === "Clientes") &
+      !(form === "Médicos") &
+      !(form === "Enfermeiros") &
+      !(form === "Equipe") &
+      !(form === "Médicos⠀") &
+      !(form === "Enfermeiros⠀") &
+      !(
+        (form === "Equipe⠀") &
+        !(form === "Procedimentos") &
+        !(form === "Usuários")
+      )
+    ) {
+      fields = [
+        { name: "ID do Cliente", type: "number" },
+        { name: "ID do Médico", type: "number" },
+        { name: "ID do Procedimento", type: "number" },
+        { name: "Hora", type: "time" },
+        { name: "Descrição", type: "text" },
       ];
     }
     setFields(fields);
@@ -183,7 +525,7 @@ function App() {
           setData(response);
         })
         .catch((err) => {
-          setData([{ id: 0 }]);
+          setData([]);
         });
     } else {
       setData([]);
@@ -196,16 +538,170 @@ function App() {
           setData(response);
         })
         .catch((err) => {
-          setData([{ id: 0 }]);
+          setData([]);
         });
     } else {
       setData([]);
+    }
+    if (form === "Enfermeiros") {
+      axios
+        .get("http://localhost:3001/nurses/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Equipe") {
+      axios
+        .get("http://localhost:3001/staff/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Médicos⠀") {
+      axios
+        .get("http://localhost:3001/''''''''/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Enfermeiros⠀") {
+      axios
+        .get("http://localhost:3001/''''''''/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Equipe⠀") {
+      axios
+        .get("http://localhost:3001/''''''''''''/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Procedimentos") {
+      axios
+        .get("http://localhost:3001/procedures/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (form === "Usuários") {
+      axios
+        .get("http://localhost:3001/logins/get/objects")
+        .then((resp) => {
+          let response = resp.data.response;
+          setData(response);
+        })
+        .catch((err) => {
+          setData([]);
+        });
+    } else {
+      setData([]);
+    }
+    if (
+      !(form === "Clientes") &
+      !(form === "Médicos") &
+      !(form === "Enfermeiros") &
+      !(form === "Equipe") &
+      !(form === "Médicos⠀") &
+      !(form === "Enfermeiros⠀") &
+      !(
+        (form === "Equipe⠀") &
+        !(form === "Procedimentos") &
+        !(form === "Usuários")
+      )
+    ) {
+      setData([{ id: 0 }]);
+    }
+  }
+
+  function getTableModel(form) {
+    if (form === "Clientes") {
+      setTableModel(modelClients);
+      // modelExams
+      // modelMedicalHis
+    }
+    if (form === "Médicos") {
+      setTableModel(modelDoctors);
+    }
+    if (form === "Enfermeiros⠀") {
+      setTableModel(modelNurses);
+    }
+    if (form === "Equipe") {
+      setTableModel(modelStaff);
+    }
+    if (form === "Médicos⠀") {
+      setTableModel(modelSchedule);
+    }
+    if (form === "Enfermeiros⠀") {
+      setTableModel(modelSchedule);
+    }
+    if (form === "Equipe⠀") {
+      setTableModel(modelSchedule);
+    }
+    if (form === "Procedimentos") {
+      setTableModel(modelProcedures);
+    }
+    if (form === "Usuários") {
+      setTableModel(modelLogins);
+    } else if (
+      !(form === "Clientes") &
+      !(form === "Médicos") &
+      !(form === "Enfermeiros") &
+      !(form === "Equipe") &
+      !(form === "Médicos⠀") &
+      !(form === "Enfermeiros⠀") &
+      !(
+        (form === "Equipe⠀") &
+        !(form === "Procedimentos") &
+        !(form === "Usuários")
+      )
+    ) {
+      setTableModel(modelExams);
     }
   }
 
   function handleFormClick(form, clicktype) {
     handleFieldsRender(form);
+    getTableModel(form);
     getTableData(form);
+
     let newRender;
     if (clicktype === "simple") {
       newRender = formRender.map((walk) => {
@@ -269,19 +765,21 @@ function App() {
               ></Workbar>
 
               <div className="sidebarcontainer">
-                <TableStarter
+                <DataList
                   state={formRender[0]}
                   handleMassDataInputRenderClick={
                     handleMassDataInputRenderClick
                   }
-                  data={data}
-                ></TableStarter>
+                  tableDataItems={data}
+                  tableModel={tableModel}
+                ></DataList>
                 <Sidebar elements={options} handleFormClick={handleFormClick} />
               </div>
               <MassDataInput
                 state={massDataInputRender[0]}
                 fields={fields}
                 handleMassDataInputRenderClick={handleMassDataInputRenderClick}
+                handleAdditon={handleAdditon}
               />
             </div>
           );

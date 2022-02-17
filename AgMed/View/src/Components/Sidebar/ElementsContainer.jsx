@@ -64,9 +64,9 @@ console.log(elements[0])
   ]);
 
   const [scheduleButtons] = useState([
-    { text: "Médicos", editLevel: "admin", viewLevel: "admin"},
-    { text: "Enfermeiros", editLevel: "admin", viewLevel: "admin"},
-    { text: "Equipe", editLevel: "admin", viewLevel: "admin"},
+    { text: "Médicos⠀", editLevel: "admin", viewLevel: "admin"},
+    { text: "Enfermeiros⠀", editLevel: "admin", viewLevel: "admin"},
+    { text: "Equipe⠀", editLevel: "admin", viewLevel: "admin"},
   ]);
 
   const [formButtons] = useState([

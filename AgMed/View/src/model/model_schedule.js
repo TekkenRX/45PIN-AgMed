@@ -1,34 +1,34 @@
 const model_schedule = (
     [
       {
-        name: "id",
+        name: "ID",
         selector: (row) => row.id,
       },
       {
-        name: "id_employee",
+        name: "ID do Funcionário",
         selector: (row) => row.id_employee,
       },
       {
-        name: "sun",
+        name: "Domingo",
         selector: (row) => row.sun,
       },{
-        name: "mon",
+        name: "Segunda",
         selector: (row) => row.mon,
       },{
-        name: "tues",
+        name: "Terça",
         selector: (row) => row.tues,
       },
       {
-        name: "wed",
+        name: "Quarta",
         selector: (row) => row.wed,
       },{
-        name: "thu",
+        name: "Quinta",
         selector: (row) => row.thu,
       },{
-        name: "fri",
+        name: "Sexta",
         selector: (row) => row.fri,
       },{
-        name: "sat",
+        name: "Sabádo",
         selector: (row) => row.sat,
       },
       ]

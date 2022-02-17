@@ -3,7 +3,8 @@ const db = require("../database/database");
 class repository_logins {
   async get() {
     try {
-      const procedure = await db.query("SELECT * FROM table_logins");
+      const procedure = await db.query("SELECT * FROM table_persons, table_logins"+
+      " Where table_persons.id = table_logins.id_person;")
       return procedure;
     } catch (QueryResultError) {
       return "QueryResultError FROM table_logins";
