@@ -69,7 +69,13 @@ class authController {
     try {
       const { name, surname, cpf, contact, address } = req.body;
 
-      const response = await repositoryClients.add(name, surname, cpf, contact, address);
+      const response = await repositoryClients.add(
+        name,
+        surname,
+        cpf,
+        contact,
+        address
+      );
 
       return res.send({ response });
     } catch (err) {
@@ -81,7 +87,14 @@ class authController {
     try {
       const { id, name, surname, cpf, contact, address } = req.body;
 
-      const response = await repositoryClients.update(id, name, surname, cpf, contact, address);
+      const response = await repositoryClients.update(
+        id,
+        name,
+        surname,
+        cpf,
+        contact,
+        address
+      );
 
       return res.send({ response });
     } catch (err) {

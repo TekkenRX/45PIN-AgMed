@@ -1,20 +1,25 @@
 const model_exams = (
     [
       {
-        name: "id",
+        name: "ID",
         selector: (row) => row.id,
       },
       {
-        name: "id_client",
+        name: "ID do Cliente",
         selector: (row) => row.id_client,
       },
       {
-        name: "id_doctor",
+        name: "ID do Médico",
         selector: (row) => row.id_doctor,
+        omit: true
       },
       {
-        name: "id_exam_info",
-        selector: (row) => row.id_exam_info,
+        name: "Hora",
+        selector: (row) => row.time_frame,
+      },
+      {
+        name: "Descrição",
+        selector: (row) => row.desc,
       },
       ]
   );

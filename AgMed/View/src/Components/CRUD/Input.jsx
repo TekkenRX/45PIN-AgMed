@@ -1,11 +1,11 @@
 import "./CRUD.css";
 
-const formInput = ({ field }) => {
+const formInput = ({ field, id}) => {
   return (
     <>
       <div className="inputFiledsCollections">
         <label className="inputFiledsLabel">{field.name}</label>
-        <input className="inputFiledsInput" type="date" placeholder={field.name} />
+        <input className="inputFiledsInput" id={id} type={field.type} placeholder={field.name} />
       </div>
     </>
   );

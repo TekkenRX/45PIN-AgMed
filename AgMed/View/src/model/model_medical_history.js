@@ -1,19 +1,15 @@
 const model_entrys = (
     [
       {
-        name: "id",
+        name: "ID",
         selector: (row) => row.id,
       },
       {
-        name: "id_client",
-        selector: (row) => row.id_client,
-      },
-      {
-        name: "entry",
+        name: "Entrada",
         selector: (row) => row.entry,
       },
       {
-        name: "time",
+        name: "Dia",
         selector: (row) => row.time,
       },
       ]

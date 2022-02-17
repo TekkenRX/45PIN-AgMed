@@ -73,8 +73,10 @@ class repository_doctors {
             role +
             "')"
         );
-      } catch {console.log("Employee already exists or is invalid");}
-
+      } catch {
+        console.log("Employee already exists or is invalid");
+      }
+      console.log("hi");
       const id_employee = await db.query(
         "SELECT id FROM table_employees where " +
           "id_persons" +
@@ -82,15 +84,11 @@ class repository_doctors {
           id_persons[0].id +
           "'"
       );
+      console.log(id_employee[0].id);
+      
       const procedure = await db.query(
-        "INSERT INTO table_doctors (id, crm, degree, id_employee)" +
-          "VALUES (DEFAULT, '" +
-          crm +
-          "', '" +
-          degree +
-          "', '" +
-          id_employee[0].id +
-          "')"
+        "INSERT INTO public.table_doctors (id, crm, degree, id_employee)" +
+          "VALUES (DEFAULT, '"+crm+"', '"+degree+"', '"+id_employee[0].id+"')"
       );
 
       return procedure;
